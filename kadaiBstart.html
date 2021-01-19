@@ -18,12 +18,21 @@
       text-align: center;
       line-height: 100px;
     }
-    .win{
-      background: pink;
-      /*border-radius: 50%;*/
+    .daikichi{
+      background: red;
+      border-radius: 50%;
       /*transform: rotate(360deg);*/
     }
-    .lose{
+    .tyuukichi{
+      background: yellow;
+      transform: scale(0.9);
+    }
+    .shokichi{
+      background: orange;
+      transform: scale(0.9);
+    }
+    .kyou{
+      background: blue;
       transform: scale(0.9);
     }
   </style>
@@ -34,19 +43,29 @@
     'use strict';
 
     const num = 5;
-    const winner = Math.floor(Math.random() * num); // 0 - 4
+    const dai = 1;
+    const tyuu = 2;
+    const sho = 3;
+    const kyou = 4;
+    
 
     for (let i = 0; i < num; i++) {
       const div = document.createElement('div');
       div.classList.add('box');
-      
+      const rand = Math.floor(Math.random() * num); // 0 - 4
       div.addEventListener('click', () => {
-        if (i === winner) {
-          div.textContent = 'Win!';
-          div.classList.add('win');
-        } else {
-          div.textContent = 'Lose!';
-          div.classList.add('lose');
+        if (rand === dai) {
+          div.textContent = '大吉!';
+          div.classList.add('daikichi');
+        } else if(rand == tyuu){
+          div.textContent = '中吉!';
+          div.classList.add('tyuukichi');
+        }else if(rand == sho){
+          div.textContent = '小吉!';
+          div.classList.add('shokichi');
+        }else{
+          div.textContent = '凶!';
+          div.classList.add('kyou');
         }
       });
 
